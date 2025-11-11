@@ -2,7 +2,6 @@ package com.chileno.jefferson.cazarpatos
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Patterns
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
@@ -40,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
         var isValid = true
 
         // Validate email
-        if (!isValidEmail(email)) {
+        if (!LoginValidator.isValidEmail(email)) {
             emailInputLayout.error = getString(R.string.error_invalid_email)
             isValid = false
         } else {
@@ -48,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         // Validate password (minimum 8 characters)
-        if (!isValidPassword(password)) {
+        if (!LoginValidator.isValidPassword(password)) {
             passwordInputLayout.error = getString(R.string.error_password_length)
             isValid = false
         } else {
@@ -61,13 +60,5 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
             finish() // Close login activity so user can't go back
         }
-    }
-
-    private fun isValidEmail(email: String): Boolean {
-        return email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    }
-
-    private fun isValidPassword(password: String): Boolean {
-        return password.length >= 8
     }
 }
