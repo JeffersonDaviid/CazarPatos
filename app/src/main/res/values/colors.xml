@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    
+    <!-- Apple-style colors -->
+    <color name="apple_blue">#007AFF</color>
+    <color name="apple_light_gray">#F2F2F7</color>
+    <color name="apple_gray">#8E8E93</color>
+    <color name="apple_dark_gray">#3A3A3C</color>
+    <color name="apple_red">#FF3B30</color>
+    <color name="apple_system_gray6">#F2F2F7</color>
+    <color name="apple_separator">#C6C6C8</color>
 </resources>
