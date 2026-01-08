@@ -1,5 +1,6 @@
 package com.chileno.jefferson.cazarpatos
 
+import RankingPlayerDBHelper
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -30,6 +31,37 @@ class RankingActivity : AppCompatActivity() {
         recyclerViewRanking.layoutManager = LinearLayoutManager(this);
         recyclerViewRanking.adapter = RankingAdapter(jugadores);
         recyclerViewRanking.setHasFixedSize(true);
+        OperacionesSqLite()
+    }
 
+    fun OperacionesSqLite(){
+        RankingPlayerDBHelper(this).deleteAllRanking()
+        RankingPlayerDBHelper(this).insertRankingByQuery(Player("Jugador9",10))
+        val patosCazados = RankingPlayerDBHelper(this).readDucksHuntedByPlayer("Jugador9")
+        RankingPlayerDBHelper(this).updateRanking(Player("Jugador9",5))
+        RankingPlayerDBHelper(this).deleteRanking("Jugador9")
+        RankingPlayerDBHelper(this).insertRanking(Player("Jugador9",7))
+        val players = RankingPlayerDBHelper(this).readAllRankingByQuery()
+        GrabarRankingSQLite()
+        LeerRankingsSQLite()
+    }
+    fun GrabarRankingSQLite(){
+        val jugadores = arrayListOf(
+            Player("jeff.Chileno", 11),
+            Player("Jugador2", 6),
+            Player("Jugador3", 3),
+            Player("Jugador4", 9)
+        )
+        jugadores.sortByDescending { it.huntedDucks }
+        for(jugador in jugadores){
+            RankingPlayerDBHelper(this).insertRanking(jugador)
+        }
+    }
+    fun LeerRankingsSQLite(){
+        val jugadoresSQLite = RankingPlayerDBHelper(this).readAllRanking()
+        val recyclerViewRanking: RecyclerView = findViewById(R.id.recyclerViewRanking)
+        recyclerViewRanking.layoutManager = LinearLayoutManager(this)
+        recyclerViewRanking.adapter = RankingAdapter(jugadoresSQLite)
+        recyclerViewRanking.setHasFixedSize(true)
     }
 }
