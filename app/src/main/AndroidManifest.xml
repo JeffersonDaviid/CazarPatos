@@ -11,19 +11,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CazarPatos">
+
+        <!-- RankingActivity es ahora la actividad principal y de inicio -->
         <activity
-            android:name=".LoginActivity"
+            android:name=".RankingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- LoginActivity ya no es una actividad de inicio -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+            <!-- Se eliminó el intent-filter de LAUNCHER de aquí -->
+        </activity>
+
         <activity
             android:name=".MainActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
+
     </application>
 
 </manifest>

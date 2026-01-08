@@ -62,9 +62,9 @@ class MainActivity : AppCompatActivity() {
             .setMaxStreams(10) // Puedes reproducir hasta 10 sonidos a la  vez
             .build()
 
-// Cargar el sonido
+        // Cargar el sonido
         soundId = soundPool.load(this, R.raw.gunshot, 1)
-// Listener cuando el sonido está cargado
+        // Listener cuando el sonido está cargado
         soundPool.setOnLoadCompleteListener { _, _, _ ->
             isLoaded = true
         }
@@ -169,10 +169,10 @@ class MainActivity : AppCompatActivity() {
     private fun showGameOverDialog() {
         val builder = AlertDialog.Builder(this)
         builder.setMessage(
-                getString(
-                    R.string.dialog_message_congratulations, counter
-                )
-            ).setTitle(getString(R.string.dialog_title_game_end))
+            getString(
+                R.string.dialog_message_congratulations, counter
+            )
+        ).setTitle(getString(R.string.dialog_title_game_end))
             .setPositiveButton(getString(R.string.button_restart)) { _, _ ->
                 restartGame()
             }.setNegativeButton(getString(R.string.button_close)) { _, _ ->
