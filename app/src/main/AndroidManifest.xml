@@ -12,25 +12,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CazarPatos">
 
-        <!-- RankingActivity es ahora la actividad principal y de inicio -->
         <activity
-            android:name=".RankingActivity"
-            android:exported="true">
+            android:exported="true"
+            android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
         <!-- LoginActivity ya no es una actividad de inicio -->
         <activity
-            android:name=".LoginActivity"
-            android:exported="true">
-            <!-- Se eliminó el intent-filter de LAUNCHER de aquí -->
+            android:name=".RankingActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".MainActivity" android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
             android:exported="false" />
 
     </application>
